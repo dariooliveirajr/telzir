@@ -1,0 +1,82 @@
+<script>
+	function plan30(){
+		var plano = 30;
+		$('#plan30').css({'color':'#534cea',
+						  'font-weight':'bold',
+						  'border-bottom':'3px solid #3c36cc',
+						  'margin-bottom':'-3px'});
+		$('#plan60').css({'color':'#616161',
+						  'font-weight':'normal',
+						  'border-bottom':'none',
+						  'margin-bottom':'0px'});
+		$('#plan120').css({'color':'#616161',
+						  'font-weight':'normal',
+						  'border-bottom':'none',
+						  'margin-bottom':'0px'});
+		calculo(plano);
+	}
+</script>
+<script>
+	function plan60(){
+		$('#plan30').css({'color':'#616161',
+						  'font-weight':'normal',
+						  'border-bottom':'none',
+						  'margin-bottom':'0px'});
+		$('#plan60').css({'color':'#534cea',
+						  'font-weight':'bold',
+						  'border-bottom':'3px solid #3c36cc',
+						  'margin-bottom':'-3px'});
+		$('#plan120').css({'color':'#616161',
+						  'font-weight':'normal',
+						  'border-bottom':'none',
+						  'margin-bottom':'0px'});
+		var plano = 60;
+		calculo(plano);
+	}
+</script>
+<script>
+	function plan120(){
+		$('#plan30').css({'color':'#616161',
+						  'font-weight':'normal',
+						  'border-bottom':'none',
+						  'margin-bottom':'-0'});
+		$('#plan60').css({'color':'#616161',
+						  'font-weight':'normal',
+						  'border-bottom':'none',
+						  'margin-bottom':'0px'});
+		$('#plan120').css({'color':'#534cea',
+						  'font-weight':'bold',
+						  'border-bottom':'3px solid #3c36cc',
+						  'margin-bottom':'-3px'});
+		var plano = 120;
+		calculo(plano);
+	}
+</script>
+
+<!-- FUNÇÃO COM OS CÁLCULOS -->
+<script>
+	function calculo(plano){
+		var minutos = $('#time_picker').val();                
+
+		$('#sem-11-16 span').text("R$ "+parseFloat((minutos*1.9).toFixed(2)));
+		$('#sem-11-17 span').text("R$ "+parseFloat((minutos*1.7).toFixed(2)));
+		$('#sem-11-18 span').text("R$ "+parseFloat((minutos*0.9).toFixed(2)));
+		$('#sem-16-11 span').text("R$ "+parseFloat((minutos*2.9).toFixed(2)));
+		$('#sem-17-11 span').text("R$ "+parseFloat((minutos*2.7).toFixed(2)));
+		$('#sem-18-11 span').text("R$ "+parseFloat((minutos*1.9).toFixed(2)));
+
+		if(minutos-plano <= 0){
+			var excedentes = 0;
+
+		}else{
+			excedentes = minutos-plano;
+		}
+
+		$('#com-11-16 span').text("R$ "+parseFloat(((excedentes*1.9)+excedentes*0.1).toFixed(2)));
+		$('#com-11-17 span').text("R$ "+parseFloat(((excedentes*1.7)+excedentes*0.1).toFixed(2)));
+		$('#com-11-18 span').text("R$ "+parseFloat(((excedentes*0.9)+excedentes*0.1).toFixed(2)));
+		$('#com-16-11 span').text("R$ "+parseFloat(((excedentes*2.9)+excedentes*0.1).toFixed(2)));
+		$('#com-17-11 span').text("R$ "+parseFloat(((excedentes*2.7)+excedentes*0.1).toFixed(2)));
+		$('#com-18-11 span').text("R$ "+parseFloat(((excedentes*1.9)+excedentes*0.1).toFixed(2)));
+	}
+</script>
